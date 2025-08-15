@@ -1,0 +1,49 @@
+#home{
+    background-color: var(--aplicacion);
+    height: 200vh;
+    overflow-x: hidden;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.inicio{
+    height: 90vh;
+    width: 100vw;
+    display: grid;
+    place-content: center;
+}
+
+.foto{
+    z-index: 1000;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    background-color: var(--formulario);
+    box-shadow: var(--shadow-elevation-24-box);
+}
+.foto img{
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+}
+.linea{
+    z-index: 100;
+    position: fixed;
+    left: 50%;
+    height: 76vh;
+    width: 0.1vw;
+    transform: translate(-0.05vw,-10vh);
+    background-color: var(--primario);
+}
+.circulo{
+    z-index: 100;
+    position: fixed;
+    left: 50%;
+    top:84vh;
+    transform: translate(-0.5vw,-10vh);
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: var(--primario);
+}

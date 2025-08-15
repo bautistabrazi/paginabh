@@ -3,7 +3,7 @@
 html {
     --modo: dark;
     --primario: rgb(255, 255, 0);
-    --primario10: rgb(255, 215, 0);
+    --primario10: #FFDB58;
     --primario-10: rgb(255, 215, 0);
     --on-primario: rgba(0, 0, 0, 0.87);
     --on-primario-bajada: rgba(0, 0, 0, 0.6);
