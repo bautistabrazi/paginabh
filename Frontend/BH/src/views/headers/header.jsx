@@ -7,7 +7,7 @@ function Header() {
   return (
     <>
       <div id="header">
-        <h1>Hola Bauti</h1>
+        
       </div>
     </>
   )

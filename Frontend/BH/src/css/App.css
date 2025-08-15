@@ -4,4 +4,5 @@
   height: 100vh;
   display: grid;
   grid-template-rows: 10vh 90vh;
+  overflow-y: scroll;
 }

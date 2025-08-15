@@ -1,20 +1,27 @@
-#home{
+#home {
     background-color: var(--aplicacion);
     height: 200vh;
     overflow-x: hidden;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
-.inicio{
+
+.inicio {
     height: 90vh;
     width: 100vw;
     display: grid;
+    grid-template-rows: 0;
     place-content: center;
+    background-color: black;
 }
 
-.foto{
+.foto {
+    position: relative;
+    transform: translate(40vw, 24vh);
     z-index: 1000;
     width: 20vw;
     height: 20vw;
@@ -22,28 +29,58 @@
     background-color: var(--formulario);
     box-shadow: var(--shadow-elevation-24-box);
 }
-.foto img{
+
+.foto img {
     width: 20vw;
     height: 20vw;
     border-radius: 50%;
 }
-.linea{
+
+.linea {
     z-index: 100;
     position: fixed;
     left: 50%;
-    height: 76vh;
-    width: 0.1vw;
-    transform: translate(-0.05vw,-10vh);
-    background-color: var(--primario);
+    height: 75vh;
+    width: 0.3vw;
+    transform: translate(-0.15vw, -10vh);
+    background-color: var(--primario-10);
+    box-shadow: var(--shadow-elevation-4-box);
 }
-.circulo{
-    z-index: 100;
+
+.circulo {
+    box-shadow: var(--shadow-elevation-4-box);
+    z-index: 200;
     position: fixed;
     left: 50%;
-    top:84vh;
-    transform: translate(-0.5vw,-10vh);
+    top: 84vh;
+    transform: translate(-0.5vw, -11vh);
     width: 1vw;
     height: 1vw;
     border-radius: 50%;
-    background-color: var(--primario);
+    background-color: var(--primario-10);
+}
+
+.imagenes {
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+
+}
+
+.imagenes div {
+    overflow: hidden;
+    opacity: 0.5;
+    transition: opacity 0.8s;
+}
+
+.imagenes div:hover {
+    opacity: 1;
+}
+
+.imagenes div img {
+    width: 50vw;
+    height: 90vh;
 }
