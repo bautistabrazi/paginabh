@@ -1,0 +1,25 @@
+.grid{
+    display: grid;
+    padding: 0.5rem;
+}
+
+.inner-grid{
+    display: grid;
+    padding: 0rem;
+}
+
+.center{
+    place-content: center;
+}
+
+.start{
+    place-content: start;
+}
+
+.end{
+    place-content: end;
+}
+
+.between{
+    justify-content: space-between;
+}

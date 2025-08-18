@@ -1,33 +1,37 @@
 #home {
     background-color: var(--aplicacion);
     height: 200vh;
+    width: 100vw;
     overflow-x: hidden;
 }
 
 * {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .inicio {
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-rows: 0;
     place-content: center;
     background-color: black;
+    
 }
 
 .foto {
     position: relative;
     transform: translate(40vw, 24vh);
-    z-index: 1000;
+    z-index: 1100;
     width: 20vw;
     height: 20vw;
     border-radius: 50%;
     background-color: var(--formulario);
     box-shadow: var(--shadow-elevation-24-box);
+    overflow: hidden;
 }
 
 .foto img {
@@ -52,8 +56,8 @@
     z-index: 200;
     position: fixed;
     left: 50%;
-    top: 84vh;
-    transform: translate(-0.5vw, -11vh);
+    top: 64vh;
+    transform: translate(-0.5vw,0);
     width: 1vw;
     height: 1vw;
     border-radius: 50%;
@@ -63,7 +67,7 @@
 .imagenes {
     position: relative;
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
@@ -72,15 +76,38 @@
 
 .imagenes div {
     overflow: hidden;
-    opacity: 0.5;
-    transition: opacity 0.8s;
+    opacity: 0.3;
+    transition: opacity 1.5s;
 }
 
 .imagenes div:hover {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .imagenes div img {
+    position: absolute;
     width: 50vw;
-    height: 90vh;
+    height: 100vh;
+}
+
+.velo{
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    z-index: 1000;
+    background: #000000;
+    opacity: 1 !important;
+    transition: opacity 1.5s;
+}
+
+.velo:hover{
+    opacity:0.7 !important;
+}
+
+.velo-ropa{
+    background: linear-gradient(270deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.velo-barber{
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }

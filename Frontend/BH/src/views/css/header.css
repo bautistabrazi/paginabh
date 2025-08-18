@@ -1,4 +1,8 @@
 #header{
     z-index: 10000;
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    top: 100vh;
     background-color: var(--primario-10);
 }

@@ -11,17 +11,19 @@ function Home() {
     <>
       <div id="home">
     
-        <div class="inicio">
-            <div class="foto">
-                <img src={logo} className="logo" alt="Vite logo" />
+        <div className="inicio">
+            <div className="foto">
+                <img src={logo} className="logo" />
             </div>
-            <div class="circulo"></div>
-            <div class="linea"></div>
-            <div class="imagenes">
-                <div class="imagen-ropa">
+            <div className="circulo"></div>
+            <div className="linea"></div>
+            <div className="imagenes">
+                <div className="imagen-ropa">
+                    <div className="velo-ropa velo"></div>
                     <img src={pezzella} />
                 </div>
-                <div class="imagen-barber">
+                <div className="imagen-barber">
+                    <div className="velo-barber velo"></div>
                     <img src={lomonaco} />
                 </div>
             </div>
