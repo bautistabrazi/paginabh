@@ -18,11 +18,11 @@ function Home() {
             <div className="circulo"></div>
             <div className="linea"></div>
             <div className="imagenes">
-                <div className="imagen-ropa">
+                <div className="imagen-ropa imagen">
                     <div className="velo-ropa velo"></div>
                     <img src={pezzella} />
                 </div>
-                <div className="imagen-barber">
+                <div className="imagen-barber imagen">
                     <div className="velo-barber velo"></div>
                     <img src={lomonaco} />
                 </div>

@@ -25,7 +25,7 @@
 .foto {
     position: relative;
     transform: translate(40vw, 24vh);
-    z-index: 1100;
+    z-index: 1300;
     width: 20vw;
     height: 20vw;
     border-radius: 50%;
@@ -41,7 +41,7 @@
 }
 
 .linea {
-    z-index: 100;
+    z-index: 1100;
     position: fixed;
     left: 50%;
     height: 75vh;
@@ -53,7 +53,7 @@
 
 .circulo {
     box-shadow: var(--shadow-elevation-4-box);
-    z-index: 200;
+    z-index: 1200;
     position: fixed;
     left: 50%;
     top: 64vh;
@@ -74,14 +74,14 @@
 
 }
 
-.imagenes div {
+.imagen{
     overflow: hidden;
-    opacity: 0.3;
     transition: opacity 1.5s;
+    opacity: 0.3;
 }
 
-.imagenes div:hover {
-    opacity: 0.8;
+.imagen:hover {
+    opacity: 1;
 }
 
 .imagenes div img {
@@ -95,17 +95,13 @@
     width: 50vw;
     height: 100vh;
     z-index: 1000;
-    background: #000000;
-    opacity: 1 !important;
-    transition: opacity 1.5s;
-}
-
-.velo:hover{
-    opacity:0.7 !important;
+    background: #000000;    
 }
 
 .velo-ropa{
     background: linear-gradient(270deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    background-position: 0 100%;
+    transition: 1s;
 }
 
 .velo-barber{
