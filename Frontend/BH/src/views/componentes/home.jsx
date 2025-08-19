@@ -10,14 +10,14 @@ function Home() {
   return (
     <>
       <div id="home">
-    
+        <div className="circulo"></div>
+        <div className="linea"></div>
         <div className="inicio">
             <div className="foto">
                 <img src={logo} className="logo" />
             </div>
-            <div className="circulo"></div>
-            <div className="linea"></div>
             <div className="imagenes">
+              <div className="linea-cover"></div>
                 <div className="imagen-ropa imagen">
                     <div className="velo-ropa velo"></div>
                     <img src={pezzella} />

@@ -24,10 +24,10 @@
 
 .foto {
     position: relative;
-    transform: translate(40vw, 24vh);
+    transform: translateX(calc(50vw - 25vh)) translateY(25vh);
     z-index: 1300;
-    width: 20vw;
-    height: 20vw;
+    width: 50vh;
+    height: 50vh;
     border-radius: 50%;
     background-color: var(--formulario);
     box-shadow: var(--shadow-elevation-24-box);
@@ -35,28 +35,39 @@
 }
 
 .foto img {
-    width: 20vw;
-    height: 20vw;
+    width: 50vh;
+    height: 50vh;
     border-radius: 50%;
 }
 
 .linea {
     z-index: 1100;
-    position: fixed;
+    position: absolute;
     left: 50%;
-    height: 75vh;
+    height: 60vh;
     width: 0.3vw;
-    transform: translate(-0.15vw, -10vh);
+    transform: translate(-0.15vw);
     background-color: var(--primario-10);
     box-shadow: var(--shadow-elevation-4-box);
+}
+
+.linea-cover {
+  z-index: 1150;
+  position: absolute; 
+  left: 50%;
+  top: 0;
+  height: 60vh;
+  width: 0.5vw;
+  transform: translateX(-0.2vw); 
+  background-color: black;
 }
 
 .circulo {
     box-shadow: var(--shadow-elevation-4-box);
     z-index: 1200;
-    position: fixed;
+    position: absolute;
     left: 50%;
-    top: 64vh;
+    top: 60vh;
     transform: translate(-0.5vw,0);
     width: 1vw;
     height: 1vw;
@@ -71,7 +82,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
-
+    cursor: pointer;
 }
 
 .imagen{
@@ -101,9 +112,11 @@
 .velo-ropa{
     background: linear-gradient(270deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
     background-position: 0 100%;
-    transition: 1s;
+    transition: background 1s;
 }
 
 .velo-barber{
     background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    background-position: 0 100%;
+    transition: background 1s;
 }
