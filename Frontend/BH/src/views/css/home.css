@@ -5,6 +5,10 @@
     overflow-x: hidden;
 }
 
+.body{
+    padding: 0 !important;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,31 +17,11 @@
 }
 
 .inicio {
-    height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-rows: 0;
     place-content: center;
-    background-color: black;
-    
-}
-
-.foto {
-    position: relative;
-    transform: translateX(calc(50vw - 25vh)) translateY(25vh);
-    z-index: 1300;
-    width: 50vh;
-    height: 50vh;
-    border-radius: 50%;
-    background-color: var(--formulario);
-    box-shadow: var(--shadow-elevation-24-box);
-    overflow: hidden;
-}
-
-.foto img {
-    width: 50vh;
-    height: 50vh;
-    border-radius: 50%;
+    background-color: #000000;
 }
 
 .linea {
@@ -119,4 +103,26 @@
     background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
     background-position: 0 100%;
     transition: background 1s;
+}
+
+.sticky-foto {
+  position: sticky;
+  top: 1rem;
+  z-index: 2000;
+  transition: width 0.3s, height 0.3s, transform 0.3s;
+}
+
+.sticky-foto img {
+  transition: width 0.3s, height 0.3s;
+}
+
+.sticky-foto.scrolled {
+  width: 8vh !important;
+  height: 8vh !important;
+  transform: translateX(0) translateY(0) scale(0.6);
+}
+
+.sticky-foto.scrolled img {
+  width: 8vh !important;
+  height: 8vh !important;
 }
