@@ -104,25 +104,3 @@
     background-position: 0 100%;
     transition: background 1s;
 }
-
-.sticky-foto {
-  position: sticky;
-  top: 1rem;
-  z-index: 2000;
-  transition: width 0.3s, height 0.3s, transform 0.3s;
-}
-
-.sticky-foto img {
-  transition: width 0.3s, height 0.3s;
-}
-
-.sticky-foto.scrolled {
-  width: 8vh !important;
-  height: 8vh !important;
-  transform: translateX(0) translateY(0) scale(0.6);
-}
-
-.sticky-foto.scrolled img {
-  width: 8vh !important;
-  height: 8vh !important;
-}

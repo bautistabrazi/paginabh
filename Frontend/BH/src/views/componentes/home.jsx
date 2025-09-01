@@ -8,7 +8,7 @@ export default function Home({ scrollContainerRef }) {
   const [scrollY, setScrollY] = useState(0);
 
   // Ajustá este valor para cuánto scroll tarda en achicarse completamente
-  const SHRINK_DISTANCE = 8;
+  const SHRINK_DISTANCE = 233;
 
   useEffect(() => {
     const container = scrollContainerRef?.current || window;
@@ -21,35 +21,54 @@ export default function Home({ scrollContainerRef }) {
   }, [scrollContainerRef]);
 
   // Calculá el progreso (0 a 1)
-  const progress = Math.min(scrollY / SHRINK_DISTANCE, 1);
+const progress = Math.min(scrollY / SHRINK_DISTANCE, 1);
 
-  // Interpolá tamaño y posición
-  const initialSize = 40; // vh
-  const finalSize = 25;    // vh
-  const size = initialSize - (initialSize - finalSize) * progress;
-  const scale = size / initialSize;
+// Offset para empezar el escalado recién cuando desaparece la anterior
+const offsetScroll = scrollY - SHRINK_DISTANCE; // arranca en 0 cuando desaparece la foto original
+const progressScale = offsetScroll > 0 ? Math.min(offsetScroll / SHRINK_DISTANCE / 2, 1) : 0;
 
-  // Interpolá la posición Y (de 25vh a 0)
-  const initialY = 25; // vh
-  const translateY = (1 - progress) * initialY;
+// Tamaño dinámico para la foto fija
+const tamañoInicio = 40;
+const tamañoFinal = 20;
+const tamaño = tamañoInicio - (tamañoInicio - tamañoFinal) * progressScale;
+const scale = tamaño / tamañoInicio;
 
+// Opacidades
+const opacidad = progress < 1 ? 1 : 0;
+const opacidadFotoFija = progress < 1 ? 0 : 1;
+  
   // Usá style en vez de clases para animación suave
-  const fotoStyle = {
-    position: 'sticky',
+  const divFoto = {
     zIndex: 2000,
-    width: `${size}vh`,
-    height: `${size}vh`,
-    transform: `translateX(calc(50vw - ${size / 2}vh)) translateY(${translateY}vh) scale(${scale})`,
-    transition: 'width 0.1s, height 0.1s, transform 0.1s',
+    width: `40vh`,
+    height: `40vh`,
+    transform: `translateX(calc(50vw - ${40 / 2}vh)) translateY(25vh)`,
     borderRadius: '50%',
     backgroundColor: 'var(--formulario)',
     boxShadow: 'var(--shadow-elevation-24-box)',
     overflow: 'hidden',
+    opacity: `${opacidad}`
   };
 
-  const imgStyle = {
-    width: `${size}vh`,
-    height: `${size}vh`,
+const divFotoFija = {
+  position: 'fixed',
+  top: 0,
+  left: '50%',
+  transformOrigin: 'top center',
+  transform: `translateX(-50%) scale(${scale})`,
+  width: `${tamañoInicio}vh`,
+  height: `${tamañoInicio}vh`,
+  borderRadius: '50%',
+  backgroundColor: 'var(--formulario)',
+  boxShadow: 'var(--shadow-elevation-24-box)',
+  overflow: 'hidden',
+  opacity: `${opacidadFotoFija}`,
+  zIndex: 2000
+};
+
+  const foto = {
+    width: `40vh`,
+    height: `40vh`,
     borderRadius: '50%',
     transition: 'width 0.1s, height 0.1s',
   };
@@ -60,8 +79,11 @@ export default function Home({ scrollContainerRef }) {
         <div className="circulo"></div>
         <div className="linea"></div>
         <div className="inicio">
-          <div className="foto sticky-foto" style={fotoStyle}>
-            <img src={logo} className="logo" style={imgStyle} />
+          <div style={divFoto}>
+            <img src={logo} className="logo" style={foto} />
+          </div>
+          <div style={divFotoFija}>
+            <img src={logo} className="logo" style={foto} />
           </div>
           <div className="imagenes">
             <div className="linea-cover"></div>
