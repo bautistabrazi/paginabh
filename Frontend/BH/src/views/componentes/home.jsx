@@ -55,7 +55,8 @@ export default function Home({ scrollContainerRef }) {
     };
   }, [scrollY, shrinkDistance]);
 
-  const divFotoStyle = useMemo(() => ({ opacity: opacidad }), [opacidad]);
+  const divFotoStyle = useMemo(() => ({ opacity: opacidad
+   }), [opacidad]);
   
   const divFotoFijaStyle = useMemo(() => ({
     position: 'fixed',
@@ -71,7 +72,7 @@ export default function Home({ scrollContainerRef }) {
     overflow: 'hidden',
     opacity: opacidadFotoFija,
     zIndex: 2000,
-    transition: 'transform 0.1s ease, opacity 0.1s ease',
+    transition: 'transform 0.1s ease ',
   }), [scale, opacidadFotoFija]);
 
   return (
