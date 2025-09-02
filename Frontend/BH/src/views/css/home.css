@@ -104,3 +104,21 @@
     background-position: 0 100%;
     transition: background 1s;
 }
+
+.logo{
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    transition: width 0.1s, height 0.1s;
+}
+
+.div-foto{
+    z-index: 2000;
+    width: 40vh;
+    height: 40vh;
+    transform:translateX(calc(50vw - 20vh)) translateY(25vh) ;
+    border-radius: 50%;
+    background-color:var(--formulario) ;
+    box-shadow: var(--shadow-elevation-24-box) ;
+    overflow: hidden;
+}
