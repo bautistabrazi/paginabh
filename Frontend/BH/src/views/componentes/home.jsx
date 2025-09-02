@@ -1,7 +1,7 @@
 import '../css/home.css';
 import logo from '../../assets/logo2.png';
-import pezzella from '../../assets/pezzella.webp';
 import lomonaco from '../../assets/lomonaco.webp';
+import fotoRopa from '../../assets/foto-bhropa.jpg';
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import Historia from './historia';
 
@@ -90,7 +90,7 @@ export default function Home({ scrollContainerRef }) {
           <div className="linea-cover"></div>
           <div className="imagen-ropa imagen">
             <div className="velo-ropa velo"></div>
-            <img src={pezzella} alt="ropa" />
+            <img src={fotoRopa} alt="ropa" className='foto'/>
           </div>
           <div className="imagen-barber imagen">
             <div className="velo-barber velo"></div>

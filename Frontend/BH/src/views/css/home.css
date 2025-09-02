@@ -75,6 +75,12 @@
     opacity: 0.3;
 }
 
+.foto{
+      width: 100%;       /* ocupa todo el ancho del contenedor */
+  height: 100%;
+    object-fit: cover; 
+}
+
 .imagen:hover {
     opacity: 1;
 }
