@@ -76,29 +76,31 @@ export default function Home({ scrollContainerRef }) {
   }), [scale, opacidadFotoFija]);
 
   return (
-    <div id="home">
-      <div className="circulo"></div>
-      <div className="linea"></div>
-      <div style={divFotoFijaStyle}>
-        <img src={logo} className="logo" alt="logo" />
-      </div>
-      <div className="inicio">
-        <div style={divFotoStyle} className="div-foto">
+    <>
+      <div id="home">
+        <div className="circulo"></div>
+        <div className="linea"></div>
+        <div style={divFotoFijaStyle}>
           <img src={logo} className="logo" alt="logo" />
         </div>
-        <div className="imagenes">
-          <div className="linea-cover"></div>
-          <div className="imagen-ropa imagen">
-            <div className="velo-ropa velo"></div>
-            <img src={fotoRopa} alt="ropa" className='foto'/>
+        <div className="inicio">
+          <div style={divFotoStyle} className="div-foto">
+            <img src={logo} className="logo" alt="logo" />
           </div>
-          <div className="imagen-barber imagen">
-            <div className="velo-barber velo"></div>
-            <img src={fotoBarber} alt="barber" className='foto'/>
+          <div className="imagenes">
+            <div className="linea-cover"></div>
+            <div className="imagen-ropa imagen">
+              <div className="velo-ropa velo"></div>
+              <img src={fotoRopa} alt="ropa" className='foto'/>
+            </div>
+            <div className="imagen-barber imagen">
+              <div className="velo-barber velo"></div>
+              <img src={fotoBarber} alt="barber" className='foto'/>
+            </div>
           </div>
         </div>
       </div>
       <Historia></Historia>
-    </div>
+    </>
   );
 }
