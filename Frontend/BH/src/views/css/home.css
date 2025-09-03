@@ -127,10 +127,3 @@
     box-shadow: var(--shadow-elevation-24-box) ;
     overflow: hidden;
 }
-
-.velo-horizontal{
-    background: #000;
-    height: 10vh;
-    position: absolute;
-    width: 100vw;
-}

@@ -8,6 +8,7 @@ export default function Historia() {
   
   return (
     <div id="historia">
+      <div className='velo-contenedor'><div className="velo-horizontal"></div></div>
       <div className='fotos-container'> 
         <div className='inner-grid'>
           <img src={foto1} className='historia-foto centrado'/>
