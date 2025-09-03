@@ -9,10 +9,23 @@ export default function Historia() {
   return (
     <div id="historia">
       <div className='fotos-container'> 
-        <img src={foto1} className='historia-foto start'/>
-        <img src={foto2} className='historia-foto end'/>
+        <div className='inner-grid'>
+          <img src={foto1} className='historia-foto centrado'/>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.</p>
+        </div>
+        <div className='inner-grid'>
+          <img src={foto2} className='historia-foto centrado'/>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.</p>
+        </div>
+        <div className='inner-grid'>
+          <img src={foto2} className='historia-foto centrado'/>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.</p>
+        </div>
+        <div className='inner-grid'>
+          <img src={foto1} className='historia-foto centrado'/>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.</p>
+        </div>
       </div>
-      
     </div>
   );
 }

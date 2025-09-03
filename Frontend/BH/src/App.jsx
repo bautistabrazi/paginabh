@@ -13,10 +13,9 @@ function App() {
   const bodyRef = useRef();
   return (
     <BrowserRouter>
-      <main>
+      <main ref={bodyRef}>
         <Home
           scrollContainerRef={bodyRef}
-          bodyRef={bodyRef}
         />
       </main>
     </BrowserRouter>

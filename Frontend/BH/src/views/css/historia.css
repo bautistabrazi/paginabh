@@ -4,20 +4,21 @@
 
 .historia-foto{
     width: 40vw;
-    height: 100%;
+    height: 30vw;
     object-fit: cover; 
 }
 
 .fotos-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
 }
 
-.start{
-    justify-self: start;
+.centrado{
+    justify-self: center;
+    padding: 1rem;
 }
 
-.end{
-    justify-self: end;
+p{
+    text-align: center;
 }
+

@@ -8,7 +8,7 @@ import Historia from './historia';
 const TAMANIO_INICIO = 40;
 const TAMANIO_FINAL = 20;
 
-export default function Home({ scrollContainerRef }) {
+export default function Home({scrollContainerRef}) {
   const [scrollY, setScrollY] = useState(0);
   const [shrinkDistance, setShrinkDistance] = useState(() => window.innerHeight * 0.25);
 
