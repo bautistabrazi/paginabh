@@ -30,7 +30,7 @@
     height: 60vh;
     width: 0.3vw;
     transform: translate(-0.15vw);
-    background-color: var(--primario-10);
+    background-color: var(--primario);
     box-shadow: var(--shadow-elevation-4-box);
 }
 
@@ -55,7 +55,7 @@
     width: 1vw;
     height: 1vw;
     border-radius: 50%;
-    background-color: var(--primario-10);
+    background-color: var(--primario);
 }
 
 .imagenes {
@@ -113,8 +113,9 @@
 .logo{
     width: 40vh;
     height: 40vh;
-    border-radius: 50%;
     transition: width 0.1s, height 0.1s;
+    object-fit: cover; 
+    
 }
 
 .div-foto{
@@ -122,8 +123,5 @@
     width: 40vh;
     height: 40vh;
     transform:translateX(calc(50vw - 20vh)) translateY(25vh) ;
-    border-radius: 50%;
-    background-color:var(--formulario) ;
-    box-shadow: var(--shadow-elevation-24-box) ;
     overflow: hidden;
 }
