@@ -8,25 +8,25 @@
         "historia1": {
             "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque dolorum sed cumque aliquam laborum veniam autem voluptatum temporibus cupiditate quos quidem      excepturi odit ex, atque, error reprehenderit quasi quae facere. Unde provident laudantium dignissimos. Modi, facilis molestias aliquid qui repudiandae tempore dolores     illum    incidunt perferendis, quos sint dolorem! Earum similique, deserunt aperiam reiciendis, aspernatur nulla incidunt accusantium ipsam voluptatibus repellendus    molestias dicta?   Neque ratione labore vero excepturi dignissimos, molestias, soluta cupiditate hic autem quasi sunt voluptates, doloremque eius voluptatum quibusdam ipsa    voluptas. Rerum  dolorum saepe assumenda distinctio dolor velit harum quaerat, ipsam fuga totam nihil. Inventore nam eos adipisci reiciendis.1",
             "foto": "1.jpg",
-            "lado_foto": "left",
+            "lado_foto": "right",
             "visible": true
         },
         "historia2": {
             "texto": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore recusandae eius ratione ab corporis? Id et cum sit! Maxime ea commodi impedit reiciendis     accusamus quia architecto culpa, ipsum incidunt voluptate dolore dolor aliquam odit optio nam quidem magni nobis dolores sit officiis, doloremque repellendus quod autem.   Temporibus magnam beatae voluptate!",
             "foto": "2.jpg",
-            "lado_foto": "right",
+            "lado_foto": "left",
             "visible": true
         },
         "historia3": {
             "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt optio dolorem repudiandae laboriosam hic explicabo doloremque consectetur ex qui. Atque     consequatur error, nulla voluptatem enim doloremque iste? Incidunt repellendus itaque temporibus, repudiandae sit dolor labore quia consequatur explicabo dolorem alias     aut, ratione et quos, doloremque tempore eveniet. Nobis placeat numquam blanditiis suscipit, a reiciendis, sed tempora et eligendi fugiat nihil. Sint laborum laboriosam    voluptate saepe!",
             "foto": "2.jpg",
-            "lado_foto": "left",
+            "lado_foto": "right",
             "visible": true
         },
         "historia4": {
             "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, dolorem nemo. Reprehenderit corporis nulla exercitationem, incidunt fuga accusamus quia   ducimus.",
             "foto": "1.jpg",
-            "lado_foto": "right",
+            "lado_foto": "left",
             "visible": true
         }
     }

@@ -11,15 +11,20 @@ const TAMANIO_FINAL = 20;
 export default function Home({scrollContainerRef}) {
   const [scrollY, setScrollY] = useState(0);
   const [shrinkDistance, setShrinkDistance] = useState(() => window.innerHeight * 0.25);
+  const [shrinkDistanceHistoria, setShrinkDistanceHistoria] = useState(() => window.innerHeight * 0.75);
 
   const updateShrinkDistance = useCallback(() => {
     setShrinkDistance(window.innerHeight * 0.25);
   }, []);
 
+  const updateShrinkDistanceHistoria = useCallback(() => {
+    setShrinkDistanceHistoria(window.innerHeight * 0.75);
+  }, []);
+
   useEffect(() => {
     window.addEventListener('resize', updateShrinkDistance);
     return () => window.removeEventListener('resize', updateShrinkDistance);
-  }, [updateShrinkDistance]);
+  }, [updateShrinkDistance, updateShrinkDistanceHistoria]);
 
   useEffect(() => {
     const container = scrollContainerRef?.current || window;
@@ -97,7 +102,7 @@ export default function Home({scrollContainerRef}) {
           </div>
         </div>
       </div>
-      <Historia></Historia>
+      <Historia scrollY={scrollY} shrinkDistance={shrinkDistanceHistoria}></Historia>
     </>
   );
 }
