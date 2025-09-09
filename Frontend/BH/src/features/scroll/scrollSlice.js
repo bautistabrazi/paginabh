@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   scrollY: 0,
-  shrinkDistance: window.innerHeight * 0.25,
+  distance: window.innerHeight,
 };
 
 export const scrollSlice = createSlice({
@@ -12,11 +12,11 @@ export const scrollSlice = createSlice({
     setScroll: (state, action) => {
       state.scrollY = action.payload;
     },
-    setShrinkDistance: (state, action) => {
-      state.shrinkDistance = action.payload;
+    setDistance: (state, action) => {
+      state.distance = action.payload;
     },
   },
 });
 
-export const { setScroll, setShrinkDistance } = scrollSlice.actions;
+export const { setScroll, setDistance } = scrollSlice.actions;
 export default scrollSlice.reducer;

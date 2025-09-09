@@ -2,59 +2,57 @@ import '../css/home.css';
 import logo from '../../assets/logo2.png';
 import fotoRopa from '../../assets/foto-bhropa.jpg';
 import fotoBarber from '../../assets/foto-bhbarber.jpg';
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useMemo, useCallback } from 'react';
 import Historia from './historia';
-import { useDispatch } from 'react-redux';
-import { setScroll, setShrinkDistance } from '../../features/scroll/scrollSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setScroll, setDistance } from '../../features/scroll/scrollSlice';
 
 const TAMANIO_INICIO = 40;
 const TAMANIO_FINAL = 20;
 
 export default function Home({scrollContainerRef}) {
-  
-  const [scrollY, setScrollY] = useState(0);
-  const [shrinkDistance, setShrinkDistance] = useState(() => window.innerHeight * 0.25);
-  const [shrinkDistanceHistoria, setShrinkDistanceHistoria] = useState(() => window.innerHeight * 0.75);
 
-  const updateShrinkDistance = useCallback(() => {
-    setShrinkDistance(window.innerHeight * 0.25);
-  }, []);
+  // SETEO
+  const dispatch = useDispatch();
+  const scrollY = useSelector((state) => state.scrolls.scrollY ?? 0);
+  const distance = useSelector((state) => state.scrolls.distance ?? window.innerHeight);
 
-  const updateShrinkDistanceHistoria = useCallback(() => {
-    setShrinkDistanceHistoria(window.innerHeight * 0.75);
-  }, []);
+  const updateDistance = useCallback(() => {
+    dispatch(setDistance(window.innerHeight));
+  }, [dispatch]);
 
   useEffect(() => {
-    window.addEventListener('resize', updateShrinkDistance);
-    return () => window.removeEventListener('resize', updateShrinkDistance);
-  }, [updateShrinkDistance, updateShrinkDistanceHistoria]);
+    window.addEventListener('resize', updateDistance);
+    dispatch(setDistance(window.innerHeight));
+    return () => {
+      window.removeEventListener('resize', updateDistance);
+    };
+  }, [dispatch, updateDistance]);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    const container = scrollContainerRef?.current || window;
+    let ticking = false;
 
-useEffect(() => {
-  const container = scrollContainerRef?.current || window;
-  let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = container === window ? window.scrollY : container.scrollTop;
+          dispatch(setScroll(y)); 
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-  const onScroll = () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const y = container === window ? window.scrollY : container.scrollTop;
-        setScrollY(y); // local state
-        dispatch(setScroll(y)); // global redux state
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
+    container.addEventListener('scroll', onScroll);
+    return () => container.removeEventListener('scroll', onScroll);
+  }, [scrollContainerRef, dispatch]);
 
-  container.addEventListener('scroll', onScroll);
-  return () => container.removeEventListener('scroll', onScroll);
-}, [scrollContainerRef, dispatch]);
-
+  //ANIMACIONES
   const { scale, opacidad, opacidadFotoFija } = useMemo(() => {
-    const progress = Math.min(scrollY / shrinkDistance, 1);
-    const offsetScroll = scrollY - shrinkDistance;
-    const progressScale = offsetScroll > 0 ? Math.min(offsetScroll / shrinkDistance / 2, 1) : 0;
+    const progress = Math.min(scrollY / (distance * 0.25), 1);
+    const offsetScroll = scrollY - (distance * 0.25);
+    const progressScale = offsetScroll > 0 ? Math.min(offsetScroll / (distance * 0.25) / 2, 1) : 0;
 
     const tamaño = TAMANIO_INICIO - (TAMANIO_INICIO - TAMANIO_FINAL) * progressScale;
     const scaleValue = tamaño / TAMANIO_INICIO;
@@ -64,7 +62,7 @@ useEffect(() => {
       opacidad: progress < 1 ? 1 : 0,
       opacidadFotoFija: progress < 1 ? 0 : 1,
     };
-  }, [scrollY, shrinkDistance]);
+  }, [scrollY, distance]);
 
   const divFotoStyle = useMemo(() => ({ opacity: opacidad
    }), [opacidad]);
@@ -108,7 +106,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <Historia shrinkDistance={shrinkDistanceHistoria}></Historia>
+      <Historia></Historia>
     </>
   );
 }

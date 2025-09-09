@@ -2,7 +2,7 @@ import '../css/historia.css';
 import Momento from './momento';
 import datos from "../../mock/datos.json"
 
-export default function Historia({scrollY, shrinkDistance}) {
+export default function Historia() {
 
   const items = Object.values(datos.Historias);
   
@@ -11,7 +11,7 @@ export default function Historia({scrollY, shrinkDistance}) {
       <div className='velo-contenedor'><div className="velo-horizontal"></div></div>
       <div className='fotos-container'> 
         {items?.map((historia, index) => (
-          <Momento key={index} {...historia} scrollY={scrollY} shrinkDistance={shrinkDistance * (index + 1)} />
+          <Momento key={index} {...historia} index={index} />
         ))}
       </div>
     </div>

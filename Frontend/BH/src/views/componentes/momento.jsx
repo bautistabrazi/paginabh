@@ -1,18 +1,22 @@
 import '../css/historia.css';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 const imagenes = import.meta.glob("../../assets/*", { eager: true, import: "default" });
+import {  useSelector } from 'react-redux';
 
-export default function Momento ({texto, foto, lado_foto, visible, scrollY, shrinkDistance }) {
+export default function Momento ({texto, foto, lado_foto, visible, index}) {
 
     const imgPath = imagenes[`../../assets/${foto}`];
-        
+
+    const scrollY = useSelector((state) => state.scrolls.scrollY ?? 0);
+    const distance = useSelector((state) => state.scrolls.distance ?? window.innerHeight);
+
     const {  opacidad } = useMemo(() => {
-        const progress = Math.min(scrollY / shrinkDistance, 1);
+        const progress = Math.min(scrollY / ((distance * 0.75) * (index + 1 )), 1);
     
         return {
           opacidad: progress < 1 ? 0 : 1,
         };
-      }, [scrollY, shrinkDistance]);
+      }, [scrollY, distance, index]);
     
     const divMomentoStyle = useMemo(() => ({ opacity: opacidad,
         transition: '0.2s',
