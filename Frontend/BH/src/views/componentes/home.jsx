@@ -4,11 +4,14 @@ import fotoRopa from '../../assets/foto-bhropa.jpg';
 import fotoBarber from '../../assets/foto-bhbarber.jpg';
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import Historia from './historia';
+import { useDispatch } from 'react-redux';
+import { setScroll, setShrinkDistance } from '../../features/scroll/scrollSlice';
 
 const TAMANIO_INICIO = 40;
 const TAMANIO_FINAL = 20;
 
 export default function Home({scrollContainerRef}) {
+  
   const [scrollY, setScrollY] = useState(0);
   const [shrinkDistance, setShrinkDistance] = useState(() => window.innerHeight * 0.25);
   const [shrinkDistanceHistoria, setShrinkDistanceHistoria] = useState(() => window.innerHeight * 0.75);
@@ -26,24 +29,27 @@ export default function Home({scrollContainerRef}) {
     return () => window.removeEventListener('resize', updateShrinkDistance);
   }, [updateShrinkDistance, updateShrinkDistanceHistoria]);
 
-  useEffect(() => {
-    const container = scrollContainerRef?.current || window;
-    let ticking = false;
+  const dispatch = useDispatch();
 
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const y = container === window ? window.scrollY : container.scrollTop;
-          setScrollY(y);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+useEffect(() => {
+  const container = scrollContainerRef?.current || window;
+  let ticking = false;
 
-    container.addEventListener('scroll', onScroll);
-    return () => container.removeEventListener('scroll', onScroll);
-  }, [scrollContainerRef]);
+  const onScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = container === window ? window.scrollY : container.scrollTop;
+        setScrollY(y); // local state
+        dispatch(setScroll(y)); // global redux state
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  container.addEventListener('scroll', onScroll);
+  return () => container.removeEventListener('scroll', onScroll);
+}, [scrollContainerRef, dispatch]);
 
   const { scale, opacidad, opacidadFotoFija } = useMemo(() => {
     const progress = Math.min(scrollY / shrinkDistance, 1);
@@ -102,7 +108,7 @@ export default function Home({scrollContainerRef}) {
           </div>
         </div>
       </div>
-      <Historia scrollY={scrollY} shrinkDistance={shrinkDistanceHistoria}></Historia>
+      <Historia shrinkDistance={shrinkDistanceHistoria}></Historia>
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function Momento ({texto, foto, lado_foto, visible, scrollY, shri
       }, [scrollY, shrinkDistance]);
     
     const divMomentoStyle = useMemo(() => ({ opacity: opacidad,
-        transition: '1s',
+        transition: '0.2s',
     }), [opacidad]);
 
     const historiaFotoStyle = ({
