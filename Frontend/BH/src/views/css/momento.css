@@ -1,3 +1,13 @@
 #Historia{
     padding: 1rem;
 }
+
+.left{
+    justify-self: start;
+    padding: 1rem;
+}
+
+.right{
+    justify-self: end;
+    padding: 1rem;
+}

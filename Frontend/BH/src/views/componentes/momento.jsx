@@ -1,4 +1,4 @@
-import '../css/historia.css';
+import '../css/momento.css';
 import React, { useMemo } from 'react';
 const imagenes = import.meta.glob("../../assets/*", { eager: true, import: "default" });
 import {  useSelector } from 'react-redux';
@@ -16,17 +16,18 @@ export default function Momento ({texto, foto, lado_foto, visible, index}) {
         return {
           opacidad: progress < 1 ? 0 : 1,
         };
-      }, [scrollY, distance, index]);
+    }, [scrollY, distance, index]);
     
     const divMomentoStyle = useMemo(() => ({ opacity: opacidad,
         transition: '0.2s',
     }), [opacidad]);
 
-    const historiaFotoStyle = ({
+    const historiaFotoStyle = useMemo(() => ({         
         width: `40vw`,
         height: `30vw`,
         objectFit: `cover`,
-      });
+        transform: `translateX(${scrollY * 0.1}px)`
+    }), [scrollY]);
 
     if (!visible) {
         return null;
@@ -36,13 +37,17 @@ export default function Momento ({texto, foto, lado_foto, visible, index}) {
             <div id={"Momento"} className='inner-grid div-foto-historia' style={divMomentoStyle}>
                 {lado_foto === "left" ? 
                 <>
-                    <img src={imgPath} style={historiaFotoStyle}/>
+                    <div className='grid'>
+                        <img src={imgPath} className={`historia-foto ${lado_foto}`} style={historiaFotoStyle}/>
+                    </div>
                     <div className='grid center historia-texto-right'><p>{texto}</p></div>
                 </>
                 :
                 <>
                     <div className='grid center historia-texto-left'><p>{texto}</p></div>
-                    <img src={imgPath} className={`historia-foto ${lado_foto}`}/>
+                    <div className='grid'>
+                        <img src={imgPath} className={`historia-foto ${lado_foto}`} style={historiaFotoStyle}/>
+                    </div>
                 </>
                 }
             </div>
