@@ -11,3 +11,13 @@
     justify-self: end;
     padding: 1rem;
 }
+
+p{
+    font-size: 1rem;
+    align-self: center;
+}
+
+.center{
+    justify-self: center;
+    padding: 1rem;
+}
