@@ -11,39 +11,45 @@ export default function Momento ({texto, foto, lado_foto, visible, index}) {
     const distance = useSelector((state) => state.scrolls.distance ?? window.innerHeight);
     
     const {opacidad, desp} = useMemo(() => {
-        const progress = Math.min(scrollY / (((distance * 0.75) * (index + 1 )) * 0.85), 1);
-        const offsetScroll = scrollY - ((distance * 0.75) * (index + 1 )) - distance * -0.25;
-        const progressDesp = offsetScroll > 0 ? Math.min(offsetScroll / (distance * 0.25), 1) : 0;
+        const progress = Math.min(scrollY / (((distance * 0.75) * (index + 1 )) - distance * 0.1), 1);
+        const progressHide = Math.min(scrollY / (((distance * 0.75) * (index + 2 )) - distance * 0.1), 1);
+        const offsetScroll = scrollY - ((distance * 0.75) * (index + 1 )) - distance * -0.1;
+        const progressDesp = offsetScroll > 0 ? 1 : 0;
         const desplazamiento = 110 * (1 - progressDesp)
 
+        const opacidad = progress < 1 && progressHide < 1 ? 0.15 : progress == 1 && progressHide == 1 ? 0.15 : 1
+
         return {
-            opacidad: progress < 1 ? 0.3 : 1,
-            desp: lado_foto == "right" ? desplazamiento : desplazamiento * -1,
+            opacidad: opacidad,
+            desp: lado_foto == "right" ? desplazamiento  : desplazamiento * -1,
+        };
+    }, [scrollY, distance, index, lado_foto]);
+
+    const {fotoScale} = useMemo(() => {
+        const progress = Math.min(scrollY / (((distance * 0.75) * (index + 1 )) - distance * 0.1), 1);
+        
+        return {
+            fotoScale: progress < 1 ? 0.8 : 1 ,
         };
     }, [scrollY, distance, index]);
 
     const divMomentoStyle = useMemo(() => ({ 
         opacity: opacidad,
-        transition: '0.3s',
+        transition: '0.3s ease',
     }), [opacidad]);
+
+    const pStyle = useMemo(() => ({ 
+        transform: `scale(${fotoScale})`,
+        transition: '0.3s',
+    }), [fotoScale]);
 
     const historiaFotoStyle = useMemo(() => ({         
         width: `40vw`,
         height: `30vw`,
         objectFit: `cover`,
-        transform: `translateX(${desp}vh)`
-    }), [scrollY, desp]);
-
-
-
-
-
-
-
-
-
-
-
+        transform: `translateX(${desp}vh)`,
+        transition: '0.5s ease'
+    }), [ desp]);
 
     if (!visible) {
         return null;
@@ -56,11 +62,11 @@ export default function Momento ({texto, foto, lado_foto, visible, index}) {
                     <div className='grid'>
                         <img src={imgPath} className={`historia-foto center`} style={historiaFotoStyle}/>
                     </div>
-                    <div className='grid historia-texto-right'><p>{texto}</p></div>
+                    <div className='grid historia-texto-right'><p style={pStyle}>{texto}</p></div>
                 </>
                 :
                 <>
-                    <div className='grid historia-texto-left'><p>{texto}</p></div>
+                    <div className='grid historia-texto-left'><p style={pStyle}>{texto}</p></div>
                     <div className='grid'>
                         <img src={imgPath} className={`historia-foto center`} style={historiaFotoStyle}/>
                     </div>
